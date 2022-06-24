@@ -45,12 +45,13 @@ const App = () => {
       .then(result => {
         setRef(result['refer'])
       })
-      .then(() => liff.sendMessages([{
-        'type': 'text',
-        'text': uid + '\n' + ref
-      }]).then(function () {
-        window.alert('Message sent');
-      }))
+      .then(() => setTimeout(() => {
+        liff.sendMessages([{
+          'type': 'text',
+          'text': uid + '\n' + ref
+        }])
+        console.log(uid + '\n' + ref)
+      }, 2000))
   }
 
   const initializeApp = () => {
@@ -210,6 +211,7 @@ const App = () => {
         please wait
         {uid}
         {ref}
+        <button onClick={callBackend}></button>
       </section>
     </div>
   );
