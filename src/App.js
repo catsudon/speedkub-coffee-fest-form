@@ -30,6 +30,9 @@ const App = () => {
 					return profile.userId;
 				});
 			})
+      .then(() => {
+        initializeApp()
+      })
 			.then(() => {
 				refer = fetch(
 					`https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/share?userID=${lineuid}`
