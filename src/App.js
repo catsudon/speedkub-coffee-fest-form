@@ -14,6 +14,7 @@ const App = () => {
   const [isLoggedInText, setIsLoggedInText] = React.useState('')
   const [profile, setProfile] = React.useState('')
   let lineuid = ""
+  let refer = ""
 
   React.useEffect(() => {
     initializeLiff()
@@ -29,12 +30,14 @@ const App = () => {
 					return profile.userId;
 				});
 			})
-			.then((param) => {
-				console.log(param);
-				const refer = fetch(
+			.then(() => {
+				refer = fetch(
 					`https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/share?userID=${lineuid}`
-				).json();
+				);
 			})
+      .then(() => {
+        alert(refer.JSON().refer)
+      })
       .catch((err) => {
         alert(err)
       })
