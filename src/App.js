@@ -13,6 +13,7 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = React.useState('')
   const [isLoggedInText, setIsLoggedInText] = React.useState('')
   const [profile, setProfile] = React.useState('')
+  const [uid, setUid] = React.useState('')
   let lineuid = ""
   let refer = ""
 
@@ -26,20 +27,20 @@ const App = () => {
         liffId: process.env.REACT_APP_LIFF_ID
       })
       .then(() => {
-				 lineuid = liff.getProfile().then((profile) => {
+				 setUid(liff.getProfile().then((profile) => {
 					return profile.userId;
-				});
+				}))
 			})
       .then(() => {
         initializeApp()
       })
 			.then(() => {
 				refer = fetch(
-					`https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/share?userID=${lineuid}`
+					`https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/share?userID=${uid}`
 				);
 			})
       .then(() => {
-        alert(refer.refer)
+        alert(refer.json())
       })
       .catch((err) => {
         alert(err)
