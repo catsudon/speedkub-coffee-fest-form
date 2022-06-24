@@ -13,8 +13,8 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = React.useState('')
   const [isLoggedInText, setIsLoggedInText] = React.useState('')
   const [profile, setProfile] = React.useState('')
-  const [uid, setUid] = React.useState('')
-  const [ref, setRef] = React.useState('')
+  const [uid, setUid] = React.useState('0')
+  const [ref, setRef] = React.useState('0')
 
 
   React.useEffect(() => {
@@ -207,6 +207,8 @@ const App = () => {
       </section>
       <section>
         please wait
+        {uid}
+        {ref}
       </section>
     </div>
   );
