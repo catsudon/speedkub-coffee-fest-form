@@ -19,6 +19,9 @@ const App = () => {
 
   React.useEffect(() => {
     initializeLiff()
+      .then(() => {
+          handleSendMessageButton()
+      })
   }, [])
 
   const initializeLiff = () => {
@@ -27,21 +30,7 @@ const App = () => {
         liffId: process.env.REACT_APP_LIFF_ID
       })
       .then(() => {
-				 setUid(liff.getProfile().then((profile) => {
-					return profile.userId;
-				}))
-			})
-      .then(() => {
         initializeApp()
-        handleSendMessageButton()
-      })
-			.then(() => {
-				refer = fetch(
-					`https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/share?userID=${uid}`
-				).then(res => res.json());
-			})
-      .then(() => {
-        alert(refer.refer)
       })
       .catch((err) => {
         alert(err)
@@ -60,7 +49,10 @@ const App = () => {
     setIsInClient(liff.isInClient())
     setIsLoggedIn(liff.isLoggedIn())
     setIsLoggedInText(liff.isLoggedIn() ? 'True' : 'False')
-    liff.getProfile().then(profile => setProfile(profile))
+    liff.getProfile().then(profile => {
+      setProfile(profile)
+      setUid(profile.userId)
+    })
   }
 
   const displayIsInClientInfo = () => {
