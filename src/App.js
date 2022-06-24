@@ -14,11 +14,18 @@ const App = () => {
   const [isLoggedInText, setIsLoggedInText] = React.useState('')
   const [profile, setProfile] = React.useState('')
   const [uid, setUid] = React.useState('')
-  let lineuid = ""
-  let refer = ""
+  const [ref, setRef] = React.useState('')
+  
 
   React.useEffect(() => {
     initializeLiff()
+      .then(() => {
+          handleSendMessageButton()
+      })
+      .then(() => {
+          url = `https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/share?userID=${uid}`
+          fetch(url).then(r => r.json()).then(result => setRef(result.refer))
+      })
       .then(() => {
           handleSendMessageButton()
       })
