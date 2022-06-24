@@ -32,6 +32,9 @@ const App = () => {
       .then(() => {
         callBackend()
       })
+      .then(() => {
+        handleSendMessageButton()
+      })
       .catch((err) => {
         alert(err)
       })
@@ -110,15 +113,13 @@ const App = () => {
     } else {
       liff.sendMessages([{
         'type': 'text',
-        'text': uid + ref
+        'text': uid + '\n' + ref
       }]).then(function () {
         window.alert('Message sent');
       }).catch(function (error) {
         window.alert('Error sending message: ' + error);
       });
     }
-
-    return true;
   }
 
   const handleGetAccessTokenButton = () => {
