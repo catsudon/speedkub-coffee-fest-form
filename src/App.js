@@ -15,20 +15,17 @@ const App = () => {
   const [profile, setProfile] = React.useState('')
   const [uid, setUid] = React.useState('')
   const [ref, setRef] = React.useState('')
-  
+
 
   React.useEffect(() => {
     initializeLiff()
+
+
+    fetch(`https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/share?userID=${uid}`)
+      .then(r => {r.json();console.log(r.json())})
+      .then(result => setRef(result.refer))
       .then(() => {
-          handleSendMessageButton()
-      })
-      .then(() => {
-          fetch(`https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/share?userID=${uid}`)
-          .then(r => r.json())
-          .then(result => setRef(result.refer))
-      })
-      .then(() => {
-          handleSendMessageButton()
+        handleSendMessageButton()
       })
   }, [])
 
@@ -44,7 +41,6 @@ const App = () => {
         alert(err)
       })
 
-    return true;
   }
 
   const initializeApp = () => {
@@ -189,7 +185,7 @@ const App = () => {
 
   return (
     <div className="App">
-      
+
       <section>
         <div className="Card-info">
           <h3>Is in Client</h3>
