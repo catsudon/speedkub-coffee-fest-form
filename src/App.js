@@ -40,7 +40,7 @@ const App = () => {
 				).then(res => res.json());
 			})
       .then(() => {
-        alert(refer)
+        alert(refer.refer)
       })
       .catch((err) => {
         alert(err)
