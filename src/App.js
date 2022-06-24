@@ -21,6 +21,15 @@ const App = () => {
     initializeLiff()
   }, [])
 
+  React.useEffect(() => {
+    console.log(uid + '\n' + ref + "\nbef send")
+        liff.sendMessages([{
+          'type': 'text',
+          'text': uid + '\n' + ref
+        }])
+        console.log(uid + '\n' + ref)
+  }, [ref])
+
   const initializeLiff = () => {
     liff
       .init({
@@ -39,13 +48,6 @@ const App = () => {
     fetch("https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/share?userID=" + uid)
       .then(r => r.json())
       .then(result => setRef(result['refer']))
-      .then(() =>  {
-        liff.sendMessages([{
-          'type': 'text',
-          'text': uid + '\n' + ref
-        }])
-        console.log(uid + '\n' + ref)
-      })
   }
 
   const initializeApp = () => {
