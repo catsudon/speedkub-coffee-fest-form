@@ -33,6 +33,7 @@ const App = () => {
 			})
       .then(() => {
         initializeApp()
+        handleSendMessageButton()
       })
 			.then(() => {
 				refer = fetch(
@@ -105,7 +106,7 @@ const App = () => {
     } else {
       liff.sendMessages([{
         'type': 'text',
-        'text': "You've successfully sent a message! Hooray!"
+        'text': uid
       }]).then(function () {
         window.alert('Message sent');
       }).catch(function (error) {
