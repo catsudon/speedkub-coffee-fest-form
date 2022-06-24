@@ -19,14 +19,6 @@ const App = () => {
 
   React.useEffect(() => {
     initializeLiff()
-
-
-    fetch(`https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/share?userID=${uid}`)
-      .then(r => {r.json();console.log(r.json())})
-      .then(result => setRef(result.refer))
-      .then(() => {
-        handleSendMessageButton()
-      })
   }, [])
 
   const initializeLiff = () => {
@@ -37,10 +29,22 @@ const App = () => {
       .then(() => {
         initializeApp()
       })
+      .then(() => {
+        callBackend()
+      })
       .catch((err) => {
         alert(err)
       })
 
+  }
+
+  const callBackend = () => {
+    fetch(`https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/share?userID=${uid}`)
+      .then(r => {r.json();console.log(r.json())})
+      .then(result => {
+        setRef(result.refer)
+        console.log(ref)
+      })
   }
 
   const initializeApp = () => {
