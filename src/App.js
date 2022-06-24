@@ -26,9 +26,7 @@ const App = () => {
       .init({
         liffId: process.env.REACT_APP_LIFF_ID
       })
-      .then(() => {
-        initializeApp()
-      })
+      .then(initializeApp)
       .then(callBackend)
       .catch((err) => {
         alert(err)
