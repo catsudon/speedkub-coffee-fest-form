@@ -39,21 +39,8 @@ const App = () => {
   }
 
   const callBackend = () => {
-
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "userID" : uid
-      })
-    }
-
-
-
-
-    fetch("https://script.google.com/macros/s/AKfycbyVh6lbaapQsW9TtKobPO8aFpCAHKL7NLJgiw8crDCmBaMLVLBT2LtytpET8j0hGmdz4A/exec?userID="+String(uid), requestOptions)
+    
+    fetch("https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/share?userID="+String(uid))
       .then(r => r.json())
       .then(result => {
         console.log(result)
