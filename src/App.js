@@ -37,10 +37,10 @@ const App = () => {
 			.then(() => {
 				refer = fetch(
 					`https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/share?userID=${uid}`
-				);
+				).then(res => res.json());
 			})
       .then(() => {
-        alert(refer.json())
+        alert(refer)
       })
       .catch((err) => {
         alert(err)
