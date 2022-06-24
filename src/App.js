@@ -43,6 +43,8 @@ const App = () => {
       .catch((err) => {
         alert(err)
       })
+
+    return true;
   }
 
   const initializeApp = () => {
