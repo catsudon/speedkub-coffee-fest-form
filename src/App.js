@@ -29,9 +29,7 @@ const App = () => {
       .then(() => {
         initializeApp()
       })
-      .then(() => {
-        callBackend()
-      })
+      .then(callBackend)
       .catch((err) => {
         alert(err)
       })
@@ -42,16 +40,14 @@ const App = () => {
 
     fetch("https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/share?userID=" + uid)
       .then(r => r.json())
-      .then(result => {
-        setRef(result['refer'])
-      })
-      .then(() => setTimeout(() => {
+      .then(result => setRef(result['refer']))
+      .then(() =>  {
         liff.sendMessages([{
           'type': 'text',
           'text': uid + '\n' + ref
         }])
         console.log(uid + '\n' + ref)
-      }, 2000))
+      })
   }
 
   const initializeApp = () => {
