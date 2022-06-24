@@ -23,8 +23,8 @@ const App = () => {
           handleSendMessageButton()
       })
       .then(() => {
-          url = `https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/share?userID=${uid}`
-          fetch(url).then(r => r.json()).then(result => setRef(result.refer))
+          fetch(`https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/share?userID=${uid}`)
+          .then(r => r.json()).then(result => setRef(result.refer))
       })
       .then(() => {
           handleSendMessageButton()
