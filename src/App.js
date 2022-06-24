@@ -13,7 +13,7 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = React.useState('')
   const [isLoggedInText, setIsLoggedInText] = React.useState('')
   const [profile, setProfile] = React.useState('')
-  const lineuid = ""
+  let lineuid = ""
 
   React.useEffect(() => {
     initializeLiff()
