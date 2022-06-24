@@ -36,7 +36,7 @@ const App = () => {
 				);
 			})
       .then(() => {
-        alert(refer)
+        alert(refer.refer)
       })
       .catch((err) => {
         alert(err)
