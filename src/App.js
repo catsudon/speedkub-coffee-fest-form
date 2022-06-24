@@ -24,7 +24,8 @@ const App = () => {
       })
       .then(() => {
           fetch(`https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/share?userID=${uid}`)
-          .then(r => r.json()).then(result => setRef(result.refer))
+          .then(r => r.json())
+          .then(result => setRef(result.refer))
       })
       .then(() => {
           handleSendMessageButton()
@@ -105,13 +106,15 @@ const App = () => {
     } else {
       liff.sendMessages([{
         'type': 'text',
-        'text': uid
+        'text': uid + ref
       }]).then(function () {
         window.alert('Message sent');
       }).catch(function (error) {
         window.alert('Error sending message: ' + error);
       });
     }
+
+    return true;
   }
 
   const handleGetAccessTokenButton = () => {
