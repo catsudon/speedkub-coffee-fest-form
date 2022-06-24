@@ -32,9 +32,6 @@ const App = () => {
       .then(() => {
         callBackend()
       })
-      .then(() => {
-        handleSendMessageButton()
-      })
       .catch((err) => {
         alert(err)
       })
@@ -46,9 +43,9 @@ const App = () => {
     fetch("https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/share?userID="+uid)
       .then(r => r.json())
       .then(result => {
-        //console.log(result)
         setRef(result['refer'])
       })
+      .then(() => handleSendMessageButton())
   }
 
   const initializeApp = () => {
