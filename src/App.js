@@ -28,6 +28,7 @@ const App = () => {
       {
         "type": "text",
         "text": String(ref)
+      },
       {
         "type": "flex",
         "altText": "share",
