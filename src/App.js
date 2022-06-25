@@ -23,11 +23,8 @@ const App = () => {
   }, [])
 
   React.useEffect(() => {
-    if(ref == '0') {
-      //pass
-    }
-    console.log(uid + '\n' + ref + "\nbef send")
-    const result = liff.shareTargetPicker([
+    
+    liff.shareTargetPicker([
       {
         "type": "text",
         "text": "ref = "+ref
