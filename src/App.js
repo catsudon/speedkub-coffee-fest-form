@@ -33,7 +33,7 @@ const App = () => {
         "text": "Messages from Share Target Picker"
       }
     ])
-    alert(result.status)
+    .then(result => alert(result.status))
   }, [ref])
 
   const initializeLiff = () => {
