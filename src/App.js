@@ -27,7 +27,7 @@ const App = () => {
   }, [uid])
 
   React.useEffect(() => {
-    
+
     liff.shareTargetPicker([
       {
         "type": "text",
@@ -60,7 +60,7 @@ const App = () => {
                 "action": {
                   "type": "uri",
                   "label": "สมัคร",
-                  "uri": "https://liff.line.me/1657084978-W5NaqyDN?refer="
+                  "uri": "https://liff.line.me/1657084978-W5NaqyDN?refer="+ref
                 },
                 "color": "#322D2DFF",
                 "style": "primary"
@@ -235,8 +235,8 @@ const App = () => {
 
       <section>
         <div className="Card-info">
-        {uid}
-        {ref}
+          {uid}
+          {ref}
         </div>
         <div className="Card-info">
           <h3>Login as</h3>
