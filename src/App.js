@@ -28,42 +28,6 @@ const App = () => {
       {
         "type": "text",
         "text": "ref = "
-      },
-      {
-        "type": "flex",
-        "altText": "share",
-        "contents": {
-          "type": "bubble",
-          "direction": "ltr",
-          "body": {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "text",
-                "text": "*ข้อความชวนให้สมัคร*",
-                "align": "center",
-                "contents": []
-              }
-            ]
-          },
-          "footer": {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
-              {
-                "type": "button",
-                "action": {
-                  "type": "uri",
-                  "label": "สมัคร",
-                  "uri": `https://liff.line.me/1657084978-W5NaqyDN?refer=${ref}`
-                },
-                "color": "#322D2DFF",
-                "style": "primary"
-              }
-            ]
-          }
-        }
       }
     ])
       .then(result => alert(result.status))
