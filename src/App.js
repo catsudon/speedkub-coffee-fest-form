@@ -23,6 +23,10 @@ const App = () => {
   }, [])
 
   React.useEffect(() => {
+    callBackend()
+  }, [uid])
+
+  React.useEffect(() => {
     
     liff.shareTargetPicker([
       {
@@ -75,7 +79,6 @@ const App = () => {
         liffId: process.env.REACT_APP_LIFF_ID
       })
       .then(initializeApp)
-      .then(callBackend)
       .catch((err) => {
         alert(err)
       })
