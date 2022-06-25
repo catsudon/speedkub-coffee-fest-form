@@ -235,8 +235,8 @@ const App = () => {
 
       <section>
         <div className="Card-info">
-          <h3>Is in Client</h3>
-          <p>{isInClient}</p>
+        {uid}
+        {ref}
         </div>
         <div className="Card-info">
           <h3>Login as</h3>
@@ -247,8 +247,7 @@ const App = () => {
       </section>
       <section>
         please wait
-        {uid}
-        {ref}
+
         <button onClick={callBackend}></button>
       </section>
     </div>
