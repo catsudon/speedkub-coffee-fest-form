@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Pass } from 'codemirror';
 
 const liff = window.liff
 
@@ -22,6 +23,9 @@ const App = () => {
   }, [])
 
   React.useEffect(() => {
+    if(ref == '0') {
+      //pass
+    }
     console.log(uid + '\n' + ref + "\nbef send")
     const result = liff.shareTargetPicker([
       {
@@ -55,7 +59,7 @@ const App = () => {
                 "action": {
                   "type": "uri",
                   "label": "สมัคร",
-                  "uri": "https://liff.line.me/1657084978-W5NaqyDN?refer="+refer
+                  "uri": `https://liff.line.me/1657084978-W5NaqyDN?refer=${refer}`
                 },
                 "color": "#322D2DFF",
                 "style": "primary"
