@@ -56,7 +56,7 @@ const App = () => {
                 "action": {
                   "type": "uri",
                   "label": "สมัคร",
-                  "uri": "https://liff.line.me/1657084978-W5NaqyDN?refer="+ref
+                  "uri": "https://liff.line.me/1657084978-W5NaqyDN?refer="
                 },
                 "color": "#322D2DFF",
                 "style": "primary"
