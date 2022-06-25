@@ -30,7 +30,7 @@ const App = () => {
     const result = liff.shareTargetPicker([
       {
         "type": "text",
-        "text": "ref = "+refer
+        "text": "ref = "+ref
       },
       {
         "type": "flex",
@@ -59,7 +59,7 @@ const App = () => {
                 "action": {
                   "type": "uri",
                   "label": "สมัคร",
-                  "uri": `https://liff.line.me/1657084978-W5NaqyDN?refer=${refer}`
+                  "uri": `https://liff.line.me/1657084978-W5NaqyDN?refer=${ref}`
                 },
                 "color": "#322D2DFF",
                 "style": "primary"
