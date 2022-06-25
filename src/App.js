@@ -27,7 +27,7 @@ const App = () => {
     liff.shareTargetPicker([
       {
         "type": "text",
-        "text": "ref = "+ref
+        "text": "ref = "
       },
       {
         "type": "flex",
