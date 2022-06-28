@@ -30,10 +30,6 @@ const App = () => {
 
     liff.shareTargetPicker([
       {
-        "type": "text",
-        "text": uid
-      },
-      {
         "type": "flex",
         "altText": "share",
         "contents": {
