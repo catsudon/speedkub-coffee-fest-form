@@ -114,12 +114,6 @@ const App = () => {
     }
   }
 
-  const handleOpenExternalWindowButton = () => {
-    liff.openWindow({
-      url: 'https://line.me',
-      external: true
-    });
-  }
 
   const handleCloseLIFFAppButton = () => {
     if (!liff.isInClient()) {
@@ -129,19 +123,7 @@ const App = () => {
     }
   }
 
-  const handleOpenQRCodeScannerButton = () => {
-    if (!liff.isInClient()) {
-      sendAlertIfNotInClient();
-    } else {
-      liff.scanCode().then(result => {
-        // e.g. result = { value: "Hello LIFF app!" }
-        const stringifiedResult = JSON.stringify(result);
-        alert(stringifiedResult);
-      }).catch(err => {
-        alert("scanCode failed!");
-      });
-    }
-  }
+
 
   const handleSendMessageButton = () => {
     if (!liff.isInClient()) {
@@ -158,93 +140,16 @@ const App = () => {
     }
   }
 
-  const handleGetAccessTokenButton = () => {
-    if (!liff.isLoggedIn() && !liff.isInClient()) {
-      alert('To get an access token, you need to be logged in. Please tap the "login" button below and try again.');
-    } else {
-      const accessToken = liff.getAccessToken();
-      alert(accessToken);
-    }
-  }
 
-  const handleLogginButton = () => {
-    if (!liff.isLoggedIn()) {
-      // set `redirectUri` to redirect the user to a URL other than the front page of your LIFF app.
-      liff.login();
-    }
-  }
-
-  const handleLogoutButton = () => {
-    if (liff.isLoggedIn()) {
-      liff.logout();
-      window.location.reload();
-    }
-  }
 
   const sendAlertIfNotInClient = () => {
     alert('This button is unavailable as LIFF is currently being opened in an external browser.');
   }
 
-  const share = async () => {
-    const result = await liff.shareTargetPicker([
-      {
-        "type": "flex",
-        "altText": "share",
-        "contents": {
-          "type": "bubble",
-          "direction": "ltr",
-          "body": {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "text",
-                "text": "*ข้อความชวนให้สมัคร*",
-                "align": "center",
-                "contents": []
-              }
-            ]
-          },
-          "footer": {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
-              {
-                "type": "button",
-                "action": {
-                  "type": "uri",
-                  "label": "สมัคร",
-                  "uri": "https://liff.line.me/1657084978-W5NaqyDN"
-                },
-                "color": "#322D2DFF",
-                "style": "primary"
-              }
-            ]
-          }
-        }
-      }
-    ])
-  }
-
   return (
     <div className="App">
-
       <section>
-        <div className="Card-info">
-          {uid}
-          {ref}
-        </div>
-        <div className="Card-info">
-          <h3>Login as</h3>
-          <p>
-            {isLoggedIn ? profile.displayName : '-'}
-          </p>
-        </div>
-      </section>
-      <section>
-        please wait
-
-        <button onClick={callBackend}></button>
+        { ref == '0' ? "please wait . . ." : "ref : " + ref}
       </section>
     </div>
   );
