@@ -3,6 +3,9 @@ import "./Card.css"
 
 function Card(props) {
 
+    let text = ""
+    if(props.status ) text = "กรอกไปแล้ว"
+
     return   (
         
         <div className="card">
@@ -10,7 +13,7 @@ function Card(props) {
           <div className="card-body">
             <h2>{props.name}</h2>
             <p>Lorem ipsum dolaliqua. Ut enim ad minim veniam.</p>
-            <h5>{props.author}</h5>
+            <h5>{text}</h5>
           </div>
         </div>
 

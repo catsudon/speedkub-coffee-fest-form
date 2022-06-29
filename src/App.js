@@ -13,13 +13,15 @@ const App = () => {
   const [uid, setUid] = React.useState('0')
   const [plsbind, setPlsbind] = React.useState(false)
   const [answeredNormalQuestion, setAnsweredNormalQuestion] = React.useState(false)
-  const [a, setA] = React.useState(false)
-  const [b, setB] = React.useState(false)
-  const [c, setC] = React.useState(false)
-  const [d, setD] = React.useState(false)
-  const [e, setE] = React.useState(false)
-  const [f, setF] = React.useState(false)
-  const [chg, setChg] = React.useState(false)
+  const [status, statusChg] = React.useState({
+    'a': false,
+    'b': false,
+    'c': false,
+    'd': false,
+    'e': false,
+    'f': false
+  })
+
 
   React.useEffect(() => {
     initializeLiff()
@@ -27,18 +29,11 @@ const App = () => {
 
   React.useEffect(() => {
     getInfo()
+    const interval = setInterval(() => {
+      if (answeredNormalQuestion == false) getInfo()
+    }, 5000);
+    return () => clearInterval(interval);
   }, [uid])
-
-
-  React.useEffect(() => {
-    if (answeredNormalQuestion == false) {
-      const interval = setInterval(() => {
-        console.log(answeredNormalQuestion)
-      }, 7000);
-      return () => clearInterval(interval);
-    }
-
-  }, []);
 
 
   const initializeLiff = () => {
@@ -59,12 +54,14 @@ const App = () => {
       .then(r => r.json())
       .then(result => {
         console.log(result)
-        setA(result['a']);
-        setB(result['b']);
-        setC(result['c']);
-        setD(result['d']);
-        setE(result['e']);
-        setF(result['f']);
+        setAnsweredNormalQuestion(result['answeredNormalQuestion']);
+        statusChg({'a': result['a']});
+        statusChg({'b': result['b']});
+        statusChg({'c': result['c']});
+        statusChg({'d': result['d']});
+        statusChg({'e': result['e']});
+        statusChg({'f': result['f']});
+
       })
   }
 
@@ -78,55 +75,30 @@ const App = () => {
     })
   }
 
-
-
-  const handleCloseLIFFAppButton = () => {
-    if (!liff.isInClient()) {
-      sendAlertIfNotInClient()
-    } else {
-      liff.closeWindow();
-    }
-  }
-
-  const handleOpenExternalWindowButton = (uri) => {
-
-    liff.openWindow({
-      url: uri,
-      external: true
-    });
-  }
-
-
-
-  const sendAlertIfNotInClient = () => {
-    alert('This button is unavailable as LIFF is currently being opened in an external browser.');
-  }
-
   return (
     <main className="App">
       <section>
-        {/* <Popup trigger={plsbind} setTrigger={setPlsbind}>
-          <h2>
-            กรุณาผูกไลน์กับ speedkub ก่อน
-          </h2>
-        </Popup>
-        <button onClick={() => setPlsbind(!plsbind)}></button> */}
 
         <div className='cards'>
           {answeredNormalQuestion ? wo.map((url, index) =>
+            <div onClick={() => liff.openWindow({
+              url: url,
+              external: true
+            })} >
 
-            <Card key={index} name={nameList[index]} onClick={() => {
-              liff.openWindow({ url: url, external: true })
-            }
-            } />
-
+              <Card key={index} name={nameList[index]}/>
+            </div>
           ) : w.map((url, index) =>
-            <Card key={index} name={nameList[index]} onClick={() => {
-              liff.openWindow({ url: url, external: true })
-            }
-            } />
+            <div onClick={() => liff.openWindow({
+              url: url,
+              external: true
+            })} >
+
+              <Card key={index + "w"} name={nameList[index]}/>
+
+            </div>
           )
-          }
+          }{uid}
         </div>
 
 
@@ -134,7 +106,7 @@ const App = () => {
 
 
       </section>
-    </main>
+    </main >
   );
 }
 
