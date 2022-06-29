@@ -98,7 +98,9 @@ const App = () => {
 
             </div>
           )
-          }{uid}
+          }
+          {uid}
+          {answeredNormalQuestion}
         </div>
 
 
