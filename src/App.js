@@ -100,7 +100,8 @@ const App = () => {
           )
           }
           {uid}
-          {answeredNormalQuestion}
+          {"aaaaaa"}
+          {answeredNormalQuestion ? "answered" : "nope"}
         </div>
 
 
