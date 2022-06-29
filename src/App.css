@@ -28,29 +28,23 @@ body {
   padding: 3vh 0 0 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 section {
-  display: flex;
   justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 button {
   padding: 1vw 2vw;
   margin: 1vw;
   border-radius: 0.5vw;
-  background-color: #62dafb;
+  background-color: #d4634d;
   border: none;
   color: white;
   font-weight: bold;
-  box-shadow: 0px 2px 20px rgba(98, 218, 251,.5);
+  box-shadow: 0px 2px 15px rgba(98, 218, 251,.2);
+  height: 20px;
 }
 
 table {

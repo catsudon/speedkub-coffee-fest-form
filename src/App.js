@@ -1,73 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Pass } from 'codemirror';
+import Popup from './components/Popup';
+import Card from './components/Card';
 
 const liff = window.liff
+const w = ["https://forms.gle/5PS29fFXjFdUqW3R9", "https://forms.gle/zXGmdio6htDhWqSL8", "https://forms.gle/9fjwcZANPvVhBo6A8", "https://forms.gle/sPP5EzVUd9eB3nnZ6", "https://forms.gle/FJj21nuEtf39rzrd7", "https://forms.gle/3eEmnUrjXQmU7ntp9"]
+const wo = ["https://forms.gle/QBTES8d1tGt377Gw7", "https://forms.gle/MHV5KE9oKhe258Ek9", "https://forms.gle/eeVyNx9M3vmCC7Jc7", "https://forms.gle/VcmRJtxBjrLuMQAs9", "https://forms.gle/rUV8VXQX68eadQY98", "https://forms.gle/7G1GcuiPehpA16VL6"]
+const nameList = ["Shipsmile", "Drop-off", "Laundry Bar", "TSR", "CitySoft", "iPower"]
 
 const App = () => {
 
-  const [os, setOs] = React.useState('')
-  const [language, setLanguage] = React.useState('')
-  const [version, setVersion] = React.useState('')
-  const [isInClient, setIsInClient] = React.useState('')
-  const [isLoggedIn, setIsLoggedIn] = React.useState('')
-  const [isLoggedInText, setIsLoggedInText] = React.useState('')
-  const [profile, setProfile] = React.useState('')
   const [uid, setUid] = React.useState('0')
-  const [ref, setRef] = React.useState('0')
-
+  const [plsbind, setPlsbind] = React.useState(false)
+  const [answeredNormalQuestion, setAnsweredNormalQuestion] = React.useState(false)
+  const [a, setA] = React.useState(false)
+  const [b, setB] = React.useState(false)
+  const [c, setC] = React.useState(false)
+  const [d, setD] = React.useState(false)
+  const [e, setE] = React.useState(false)
+  const [f, setF] = React.useState(false)
+  const [chg, setChg] = React.useState(false)
 
   React.useEffect(() => {
     initializeLiff()
   }, [])
 
   React.useEffect(() => {
-    callBackend()
+    getInfo()
   }, [uid])
 
-  React.useEffect(() => {
 
-    liff.shareTargetPicker([
-      {
-        "type": "flex",
-        "altText": "share",
-        "contents": {
-          "type": "bubble",
-          "direction": "ltr",
-          "body": {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "text",
-                "text": "*ข้อความชวนให้สมัคร*",
-                "align": "center",
-                "contents": []
-              }
-            ]
-          },
-          "footer": {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
-              {
-                "type": "button",
-                "action": {
-                  "type": "uri",
-                  "label": "สมัคร",
-                  "uri": "https://liff.line.me/1657084978-W5NaqyDN?refer="+ref
-                },
-                "color": "#322D2DFF",
-                "style": "primary"
-              }
-            ]
-          }
-        }
-      }
-    ])
-      .then(result => alert(result.status))
-  }, [ref])
+  React.useEffect(() => {
+    if (answeredNormalQuestion == false) {
+      const interval = setInterval(() => {
+        console.log(answeredNormalQuestion)
+      }, 7000);
+      return () => clearInterval(interval);
+    }
+
+  }, []);
+
 
   const initializeLiff = () => {
     liff
@@ -81,38 +53,31 @@ const App = () => {
 
   }
 
-  const callBackend = () => {
+  const getInfo = () => {
 
-    fetch("https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/share?userID=" + uid)
+    fetch("https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/api/info?userID=test" + uid)
       .then(r => r.json())
-      .then(result => setRef(result['refer']))
+      .then(result => {
+        console.log(result)
+        setA(result['a']);
+        setB(result['b']);
+        setC(result['c']);
+        setD(result['d']);
+        setE(result['e']);
+        setF(result['f']);
+      })
   }
 
   const initializeApp = () => {
     displayLiffData();
-    displayIsInClientInfo();
   }
 
   const displayLiffData = () => {
-    setOs(liff.getOS())
-    setLanguage(liff.getLanguage())
-    setVersion(liff.getVersion())
-    setIsInClient(liff.isInClient())
-    setIsLoggedIn(liff.isLoggedIn())
-    setIsLoggedInText(liff.isLoggedIn() ? 'True' : 'False')
     liff.getProfile().then(profile => {
-      setProfile(profile)
       setUid(profile.userId)
     })
   }
 
-  const displayIsInClientInfo = () => {
-    if (liff.isInClient()) {
-      setIsInClient('You are opening the app in the in-app browser of LINE.');
-    } else {
-      setIsInClient('You are opening the app in an external browser.');
-    }
-  }
 
 
   const handleCloseLIFFAppButton = () => {
@@ -123,21 +88,12 @@ const App = () => {
     }
   }
 
+  const handleOpenExternalWindowButton = (uri) => {
 
-
-  const handleSendMessageButton = () => {
-    if (!liff.isInClient()) {
-      sendAlertIfNotInClient();
-    } else {
-      liff.sendMessages([{
-        'type': 'text',
-        'text': uid + '\n' + ref
-      }]).then(function () {
-        window.alert('Message sent');
-      }).catch(function (error) {
-        window.alert('Error sending message: ' + error);
-      });
-    }
+    liff.openWindow({
+      url: uri,
+      external: true
+    });
   }
 
 
@@ -147,11 +103,38 @@ const App = () => {
   }
 
   return (
-    <div className="App">
+    <main className="App">
       <section>
-        { ref == '0' ? "please wait . . ." : "ref : " + ref}
+        {/* <Popup trigger={plsbind} setTrigger={setPlsbind}>
+          <h2>
+            กรุณาผูกไลน์กับ speedkub ก่อน
+          </h2>
+        </Popup>
+        <button onClick={() => setPlsbind(!plsbind)}></button> */}
+
+        <div className='cards'>
+          {answeredNormalQuestion ? wo.map((url, index) =>
+
+            <Card key={index} name={nameList[index]} onClick={() => {
+              liff.openWindow({ url: url, external: true })
+            }
+            } />
+
+          ) : w.map((url, index) =>
+            <Card key={index} name={nameList[index]} onClick={() => {
+              liff.openWindow({ url: url, external: true })
+            }
+            } />
+          )
+          }
+        </div>
+
+
+        <button onClick={() => setAnsweredNormalQuestion(!answeredNormalQuestion)}></button>
+
+
       </section>
-    </div>
+    </main>
   );
 }
 
