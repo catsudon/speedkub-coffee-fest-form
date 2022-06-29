@@ -13,14 +13,6 @@ const App = () => {
   const [uid, setUid] = React.useState('0')
   const [plsbind, setPlsbind] = React.useState(false)
   const [answeredNormalQuestion, setAnsweredNormalQuestion] = React.useState(false)
-  const [status, statusChg] = React.useState({
-    'a': false,
-    'b': false,
-    'c': false,
-    'd': false,
-    'e': false,
-    'f': false
-  })
 
 
   React.useEffect(() => {
@@ -55,13 +47,6 @@ const App = () => {
       .then(result => {
         console.log(result)
         setAnsweredNormalQuestion(result['answeredNormalQuestion']);
-        statusChg({'a': result['a']});
-        statusChg({'b': result['b']});
-        statusChg({'c': result['c']});
-        statusChg({'d': result['d']});
-        statusChg({'e': result['e']});
-        statusChg({'f': result['f']});
-
       })
   }
 
@@ -100,7 +85,7 @@ const App = () => {
           )
           }
           {uid}
-          {"aaaaaa"}
+          {"\n"}
           {answeredNormalQuestion ? "answered" : "nope"}
         </div>
 
