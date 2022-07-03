@@ -10,9 +10,14 @@ const nameList = ["Shipsmile", "Drop-off", "Laundry Bar", "TSR", "CitySoft", "iP
 
 const App = () => {
 
+  const [l, sl] = React.useState(true)
   const [uid, setUid] = React.useState('0')
   const [plsbind, setPlsbind] = React.useState(false)
   const [answeredNormalQuestion, setAnsweredNormalQuestion] = React.useState(false)
+  const [kurikuShita, settoKurikuShita] = React.useState(false)
+  const [counter, setCounter] = React.useState(0)
+  const lastClick = React.useRef(0)
+  const passedonce = React.useRef(false)
 
 
   React.useEffect(() => {
@@ -20,13 +25,20 @@ const App = () => {
   }, [])
 
   React.useEffect(() => {
-    getInfo()
-    const interval = setInterval(() => {
-      if (answeredNormalQuestion == false) getInfo()
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [uid])
+    setTimeout(() => {setCounter(counter + 1)}, 1000);
+  }, [counter]);
 
+  React.useEffect(() => {
+    setTimeout(() => {
+      if ((answeredNormalQuestion ||  passedonce.current) == false) getInfo()
+      sl(!l)
+    }, 5000);
+  }, [l])
+
+  React.useEffect(() => {
+    getInfo()
+    sl(!l)
+  }, [uid])
 
   const initializeLiff = () => {
     liff
@@ -65,32 +77,36 @@ const App = () => {
       <section>
 
         <div className='cards'>
-          {answeredNormalQuestion ? wo.map((url, index) =>
-            <div onClick={() => liff.openWindow({
-              url: url,
-              external: true
-            })} >
+          {answeredNormalQuestion || ((kurikuShita && counter - lastClick.current >= 24) || passedonce.current) ? passedonce.current = true && wo.map((url, index) =>
+            <div onClick={() => {
+              liff.openWindow({
+                url: url,
+                external: true
+              })
+              settoKurikuShita(true)
+            }
+            
+            } >
 
-              <Card key={index} name={nameList[index]}/>
+              <Card key={index} name={nameList[index]} />
             </div>
           ) : w.map((url, index) =>
-            <div onClick={() => liff.openWindow({
-              url: url,
-              external: true
-            })} >
+            <div onClick={() => {
+              liff.openWindow({
+                url: url,
+                external: true
+              })
+              settoKurikuShita(true)
+              lastClick.current = counter
+            }
+            } >
 
-              <Card key={index + "w"} name={nameList[index]}/>
+              <Card key={index + "w"} name={nameList[index]} />
 
             </div>
           )
           }
-          {uid}
-          {"\n"}
-          {answeredNormalQuestion ? "answered" : "nope"}
         </div>
-
-
-        <button onClick={() => setAnsweredNormalQuestion(!answeredNormalQuestion)}></button>
 
 
       </section>

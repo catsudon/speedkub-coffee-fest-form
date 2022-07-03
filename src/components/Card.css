@@ -38,6 +38,8 @@ h1, h2, h3, h5 {
 }
 
 .card {
+  width: auto;
+  height: auto;
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -61,16 +63,17 @@ h1, h2, h3, h5 {
 }
 
 .card h2 {
-  color: #222;
+  color: rgb(220, 62, 62);
   margin-top: -0.2em;
   line-height: 1.4;
   font-size: 1.3em;
-  font-weight: 500;
+  font-weight: 740;
   font-family: 'Montserrat', sans-serif;
   transition: all ease-in 100ms;
 }
 
 .card p {
+  margin-bottom: -0.2em;
   color: #777;
 }
 

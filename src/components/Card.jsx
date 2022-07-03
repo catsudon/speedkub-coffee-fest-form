@@ -12,7 +12,7 @@ function Card(props) {
           {/* <img src={props.img} /> */}
           <div className="card-body">
             <h2>{props.name}</h2>
-            <p>Lorem ipsum dolaliqua. Ut enim ad minim veniam.</p>
+            <p>ตอบแบบสอบถามเพื่อรับ 500 SKS คลิกเลย!</p>
             <h5>{text}</h5>
           </div>
         </div>
