@@ -77,7 +77,7 @@ const App = () => {
       <section>
 
         <div className='cards'>
-          {answeredNormalQuestion || ((kurikuShita && counter - lastClick.current >= 24) || passedonce.current) ? passedonce.current = true && wo.map((url, index) =>
+          {answeredNormalQuestion || ((kurikuShita && counter - lastClick.current >= 14) || passedonce.current) ? passedonce.current = true && wo.map((url, index) =>
             <div onClick={() => {
               liff.openWindow({
                 url: url,
