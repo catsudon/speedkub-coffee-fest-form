@@ -107,7 +107,9 @@ const App = () => {
           )
           }
         </div>
-
+          {lastClick.current}
+          ":"
+          {counter}
 
       </section>
     </main >
