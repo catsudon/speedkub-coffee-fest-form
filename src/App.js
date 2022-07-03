@@ -54,7 +54,7 @@ const App = () => {
 
   const getInfo = () => {
 
-    fetch("https://speedkub-backend-dev-n2sgktcxxa-as.a.run.app/api/info?userID=" + uid)
+    fetch("https://speedkub-line-bot-3kuvjve3ma-et.a.run.app/api/info?userID=" + uid)
       .then(r => r.json())
       .then(result => {
         console.log(result)
