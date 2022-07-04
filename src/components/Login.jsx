@@ -53,7 +53,7 @@ function Login(props) {
             <div className="popup">
                 <div className="popup-inner border-2 border-[#e6564e]">
                     <div className="popup-inner flex flex-col items-center">
-                        {props.kb == true ? "" : <label className="font-light text-2xl mb-4 text-[#e6564e] font-medium font-bold ">กรุณาผูกไลน์กับ Speedkub</label> }
+                     <label className="font-light text-2xl mb-4 text-[#e6564e] font-medium font-bold ">กรุณาผูกไลน์กับ Speedkub</label>
                         
                         <form onSubmit={handleConfirm} >
                             <div className="form-control">
