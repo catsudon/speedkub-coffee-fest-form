@@ -81,7 +81,7 @@ const App = () => {
         <Login trigger={plsbind} setTrigger={setPlsbind} uid={uid}/>
 
         <div className='cards'>
-          {answeredNormalQuestion || ((kurikuShita && counter - lastClick.current >= 6) || passedonce.current) ? passedonce.current = true && wo.map((url, index) =>
+          {answeredNormalQuestion || ((kurikuShita && counter - lastClick.current >= 15) || passedonce.current) ? passedonce.current = true && wo.map((url, index) =>
             <div onClick={() => {
               liff.openWindow({
                 url: url,
