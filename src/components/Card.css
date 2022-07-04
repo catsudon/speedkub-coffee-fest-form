@@ -90,3 +90,7 @@ h1, h2, h3, h5 {
 .card-body {
   padding: 1.2em;
 }
+
+.text-[#e6564e] {
+  font-color: #e6564e;
+}
