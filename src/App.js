@@ -20,15 +20,15 @@ const App = () => {
   const passedonce = React.useRef(false)
 
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     initializeLiff()
   }, [])
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     setTimeout(() => {setCounter(counter + 1)}, 1000);
   }, [counter]);
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     setTimeout(() => {
       if ((answeredNormalQuestion ||  passedonce.current) == false) getInfo()
       sl(!l)
@@ -36,7 +36,7 @@ const App = () => {
     }, 5000);
   }, [l])
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     getInfo()
     sl(!l)
   }, [uid])
