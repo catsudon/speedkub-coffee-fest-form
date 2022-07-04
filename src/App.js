@@ -18,7 +18,27 @@ const App = () => {
   const [counter, setCounter] = React.useState(0)
   const lastClick = React.useRef(0)
   const passedonce = React.useRef(false)
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
+ useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        setKeyboardVisible(true); // or some other action
+      }
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        setKeyboardVisible(false); // or some other action
+      }
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
 
   React.useLayoutEffect(() => {
     initializeLiff()
@@ -78,7 +98,7 @@ const App = () => {
     <main className="App">
       <section>
 
-        <Login trigger={plsbind} setTrigger={setPlsbind} uid={uid}/>
+        <Login trigger={plsbind} setTrigger={setPlsbind} uid={uid} kb={isKeyboardVisible}/>
 
         <div className='cards'>
           {answeredNormalQuestion || ((kurikuShita && counter - lastClick.current >= 60) || passedonce.current) ? passedonce.current = true && wo.map((url, index) =>
