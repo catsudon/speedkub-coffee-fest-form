@@ -20,7 +20,7 @@ const App = () => {
   const passedonce = React.useRef(false)
   const [isKeyboardVisible, setKeyboardVisible] = React.useState(false);
 
- useEffect(() => {
+ React.useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
       () => {
