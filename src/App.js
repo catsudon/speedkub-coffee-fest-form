@@ -18,7 +18,7 @@ const App = () => {
   const [counter, setCounter] = React.useState(0)
   const lastClick = React.useRef(0)
   const passedonce = React.useRef(false)
-  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const [isKeyboardVisible, setKeyboardVisible] = React.useState(false);
 
  useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
