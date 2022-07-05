@@ -25,15 +25,15 @@ const App = () => {
   }, [])
 
   React.useLayoutEffect(() => {
-    setTimeout(() => {setCounter(counter + 1)}, 1000);
+    setTimeout(() => { setCounter(counter + 1) }, 1000);
   }, [counter]);
 
   React.useLayoutEffect(() => {
     setTimeout(() => {
-      if ((answeredNormalQuestion ||  passedonce.current) == false) getInfo()
+      if ((answeredNormalQuestion || passedonce.current) == false) getInfo()
       sl(!l)
       console.log(plsbind)
-    }, 5000);
+    }, 3169);
   }, [l])
 
   React.useLayoutEffect(() => {
@@ -59,7 +59,7 @@ const App = () => {
       .then(r => r.json())
       .then(result => {
         console.log(result)
-        if(result['status'] == "-1") setPlsbind(true);
+        if (result['status'] == "-1") setPlsbind(true);
         setAnsweredNormalQuestion(result['answeredNormalQuestion']);
       })
   }
@@ -78,7 +78,7 @@ const App = () => {
     <main className="App">
       <section>
 
-        <Login trigger={plsbind} setTrigger={setPlsbind} uid={uid}/>
+        <Login trigger={plsbind} setTrigger={setPlsbind} uid={uid} />
 
         <div className='cards'>
           {answeredNormalQuestion || ((kurikuShita && counter - lastClick.current >= 60) || passedonce.current) ? passedonce.current = true && wo.map((url, index) =>
@@ -88,35 +88,36 @@ const App = () => {
                 external: true
               })
               settoKurikuShita(true)
-            }
-            
-            } >
-              {index < 3 ? <Card key={index} name={nameList[index]} sp={true}/> 
-              : <Card key={index} name={nameList[index]} sp={false}/>} 
+            }} >
+              {index < 3 ? <Card key={index} name={nameList[index]} sp={true} />
+                : <Card key={index} name={nameList[index]} sp={false} />}
 
             </div>
           ) : w.map((url, index) =>
             <div onClick={() => {
-              liff.openWindow({
-                url: url,
-                external: true
+              getInfo().then(() => {
+                liff.openWindow({
+                  url: url,
+                  external: true
+                })
+                settoKurikuShita(true)
+                lastClick.current = counter
               })
-              settoKurikuShita(true)
-              lastClick.current = counter
+
             }
             } >
-              {index < 3 ? <Card key={index + "w"} name={nameList[index]} sp={true}/> 
-              : <Card key={index + "w"} name={nameList[index]} sp={false}/>}
-              
+              {index < 3 ? <Card key={index + "w"} name={nameList[index]} sp={true} />
+                : <Card key={index + "w"} name={nameList[index]} sp={false} />}
+
 
             </div>
           )
           }
         </div>
-          {/* {lastClick.current}
+        {/* {lastClick.current}
           ":"
           {counter} */}
-          
+
 
       </section>
     </main >
