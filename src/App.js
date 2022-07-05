@@ -95,15 +95,12 @@ const App = () => {
             </div>
           ) : w.map((url, index) =>
             <div onClick={() => {
-              getInfo().then(() => {
                 liff.openWindow({
                   url: url,
                   external: true
                 })
                 settoKurikuShita(true)
                 lastClick.current = counter
-              })
-
             }
             } >
               {index < 3 ? <Card key={index + "w"} name={nameList[index]} sp={true} />
