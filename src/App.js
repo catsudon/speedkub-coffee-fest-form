@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Login from './components/Login';
+import Popup from './components/Popup';
 import {Card, SpeedkubPartner} from './components/Card';
 
 const liff = window.liff
@@ -16,6 +17,7 @@ const App = () => {
   const [answeredNormalQuestion, setAnsweredNormalQuestion] = React.useState(false)
   const [kurikuShita, settoKurikuShita] = React.useState(false)
   const [counter, setCounter] = React.useState(0)
+  const [partner, setPartner] = React.useState(false)
   const lastClick = React.useRef(0)
   const passedonce = React.useRef(false)
 
@@ -78,6 +80,8 @@ const App = () => {
     <main className="App">
       <section>
 
+        <Popup trigger={partner} setTrigger={setPartner}>
+        </Popup>
         <Login trigger={plsbind} setTrigger={setPlsbind} uid={uid} />
 
         <div className='cards'>
@@ -110,15 +114,15 @@ const App = () => {
             </div>
           )
           }
-          <SpeedkubPartner onClick={() => {
+          <div onClick={() => {
             fetch(`https://speedkub-line-bot-3kuvjve3ma-et.a.run.app/api/partner?userID=${uid}`)
             .then(() => {
-              liff.openWindow({
-                  url: "https://google.com",
-                  external: true
-                })
+              setPartner(true)
             })
-          }}></SpeedkubPartner>
+          }}>
+            <SpeedkubPartner ></SpeedkubPartner>
+          </div>
+          
         </div>
 
 

@@ -18,8 +18,8 @@ function Card(props) {
         </React.Fragment> 
           : ""}
         <h5>{text}</h5>
-        <div class="w-full place-items-end text-right border-t-2 border-gray-100 mt-2">
-                        <p class="text-[#BB000E] text-xs font-medium">คลิกเลย</p>
+        <div className="w-full place-items-end text-right border-t-2 border-gray-100 mt-2">
+                        <p className="text-[#BB000E] text-xs font-medium">คลิกเลย</p>
                     </div>
       </div>
     </div>
