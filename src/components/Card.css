@@ -68,13 +68,12 @@ h1, h2, h3, h5 {
   line-height: 1.4;
   font-size: 1.3em;
   font-weight: 740;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Noto Sans Thai', 'Montserrat', sans-serif;
   transition: all ease-in 100ms;
 }
 
 .card p {
   margin-bottom: -0.2em;
-  color: #777;
 }
 
 .card h5 {
@@ -93,4 +92,9 @@ h1, h2, h3, h5 {
 
 .text-[#e6564e] {
   font-color: #e6564e;
+}
+
+mark {
+  background-color: #e6564e;
+  color: white;
 }

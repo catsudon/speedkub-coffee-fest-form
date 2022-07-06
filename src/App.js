@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Login from './components/Login';
-import Card from './components/Card';
+import {Card, SpeedkubPartner} from './components/Card';
 
 const liff = window.liff
 const w = ["https://forms.gle/5PS29fFXjFdUqW3R9", "https://forms.gle/zXGmdio6htDhWqSL8", "https://forms.gle/9fjwcZANPvVhBo6A8", "https://forms.gle/sPP5EzVUd9eB3nnZ6", "https://forms.gle/FJj21nuEtf39rzrd7", "https://forms.gle/3eEmnUrjXQmU7ntp9"]
@@ -110,10 +110,16 @@ const App = () => {
             </div>
           )
           }
+          <SpeedkubPartner onClick={() => {
+            fetch(`https://speedkub-line-bot-3kuvjve3ma-et.a.run.app/api/partner?userID=${uid}`)
+            .then(() => {
+              liff.openWindow({
+                  url: "https://google.com",
+                  external: true
+                })
+            })
+          }}></SpeedkubPartner>
         </div>
-        {/* {lastClick.current}
-          ":"
-          {counter} */}
 
 
       </section>
