@@ -17,8 +17,8 @@
     align-items: center;
     position: relative;
     padding: 32px;
-    width: 80%;
-    height: 70vh;
+    width: 100vh;
+    height: 100vh;
     max-width: 640px;
     background-color: #FFF;
     border-radius: 0.6em;
