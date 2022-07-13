@@ -12,7 +12,7 @@ function Card(props) {
       {/* <img src={props.img} /> */}
       <div className="card-body">
         <h2 className="text-4xl">{props.name}</h2>
-        <p className="text-[#777]">ตอบแบบสอบถามเพื่อรับ 500 SKS</p>
+        <p className="text-[#777]">ตอบแบบฟอร์ม คลิกเลย!⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</p>
         {props.sp ?<React.Fragment>
           <p className="text-[#777]"><mark>พิเศษ!</mark>  ร่วมเป็นพาร์ทเนอร์กับเรา รับเพิ่ม 1,500 SKS</p>
         </React.Fragment> 
